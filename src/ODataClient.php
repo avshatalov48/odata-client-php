@@ -68,14 +68,15 @@ class ODataClient implements IODataClient
 
     /**
      * Constructs a new ODataClient.
-     * @param string                  $baseUrl                The base service URL.
-     * @param IAuthenticationProvider $authenticationProvider The IAuthenticationProvider for authenticating request messages.
-     * @param IHttpProvider|null      $httpProvider           The IHttpProvider for sending requests.
+     * @param string $baseUrl The base service URL.
+     * @param Callable|null $authenticationProvider The IAuthenticationProvider for authenticating request messages.
+     * @param IHttpProvider|null $httpProvider The IHttpProvider for sending requests.
+     * @throws ODataException
      */
     public function __construct(
         $baseUrl,
-        Callable $authenticationProvider = null,
-        IHttpProvider $httpProvider = null
+        ?Callable $authenticationProvider = null,
+        ?IHttpProvider $httpProvider = null
     ) {
         $this->setBaseUrl($baseUrl);
         $this->authenticationProvider = $authenticationProvider;
